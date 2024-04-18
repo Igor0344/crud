@@ -198,7 +198,7 @@ function renderTable() {
                           <td>${produtosBebidas[index].preco}</td>
                           <td>${produtosBebidas[index].estoque}</td>
                           <td><button onclick = "renderEditModal()" class="btn btn-warning">Editar</button></td>
-                          <td><button class="btn btn-danger">Excluir</button></td>
+                          <td><button onclick = " deleteData(${produtosBebidas[index].id})"class="btn btn-danger">Excluir</button></td>
                           `
       tbody.appendChild(row)
   }
@@ -341,4 +341,13 @@ estoque:estoque,
 tbody.innerHTML = " "
 renderTable()
 removeEditModal()
+}
+function deleteData  (id){
+  let body = document.querySelector(`tbody`)
+  const index = produtosBebidas.findIndex(item => item.id == id)
+  produtosBebidas.splice(index,1)
+
+  body.innerHTML = " "
+  renderTable()
+  
 }
